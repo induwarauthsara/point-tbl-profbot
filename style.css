@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    color: white;
+}
+
+table {
+    width: 40%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    font-size: 18px;
+    gap: 12px;
+    /* animation: table-fade-in 5s ease-in-out; */
+}
+
+.flex {
+    /*Flex*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+}

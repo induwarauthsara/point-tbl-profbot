@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Google Sheet to HTML Table</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="flex">
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone22222222</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table> <br>
+        <table id="myTable2">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const sheetDB_API = 'https://sheetdb.io/api/v1/hkgw1kryz11mv';
+        const sheetDB_API_KEY = 'hkgw1kryz11mv';
+
+        axios.get(sheetDB_API, {
+                headers: {
+                    'Authorization': sheetDB_API_KEY
+                }
+            })
+            .then(response => {
+                const data = response.data;
+                const table = document.querySelector('#myTable tbody');
+                const table2 = document.querySelector('#myTable2 tbody');
+                data.forEach(row => {
+                    const newRow = table.insertRow();
+                    const newRow2 = table2.insertRow();
+
+                    const Team_nameCell = newRow.insertCell();
+                    const chickenCell = newRow.insertCell();
+                    const P_PCell = newRow.insertCell();
+                    const killpointCell = newRow.insertCell();
+                    const Tot_PointsCell = newRow.insertCell();
+
+                    const Team_nameCell2 = newRow2.insertCell();
+                    const chickenCell2 = newRow2.insertCell();
+                    const P_PCell2 = newRow2.insertCell();
+                    const killpointCell2 = newRow2.insertCell();
+                    const Tot_PointsCell2 = newRow2.insertCell();
+
+                    Team_nameCell.innerText = row.Team_name;
+                    chickenCell.innerText = row.chicken;
+                    P_PCell.innerText = row.P_P;
+                    killpointCell.innerText = row.killpoint;
+                    Tot_PointsCell.innerText = row.Tot_Points;
+
+                    Team_nameCell2.innerText = row.Team_name2;
+                    chickenCell2.innerText = row.chicken2;
+                    P_PCell2.innerText = row.P_P2;
+                    killpointCell2.innerText = row.killpoint2;
+                    Tot_PointsCell2.innerText = row.Tot_Points2;
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: white;
+        }
+        
+        table {
+            width: 40%;
+            border-collapse: separate;
+            border-spacing: 0 20px;
+            font-size: 18px;
+            gap: 12px;
+        }
+        
+        .flex {
+            /*Flex*/
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 60px;
+            width: 100%;
+        }
+    </style>
+
+</body>
+
+</html>
